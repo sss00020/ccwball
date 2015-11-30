@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.CreateOrder1Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_memId}" for="memId" />
+                    <h:inputText id="memId" value="#{order1Controller.selected.memId}" title="#{bunccw.CreateOrder1Title_memId}" required="true" requiredMessage="#{bunccw.CreateOrder1RequiredMessage_memId}"/>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_proNo}" for="proNo" />
+                    <h:inputText id="proNo" value="#{order1Controller.selected.proNo}" title="#{bunccw.CreateOrder1Title_proNo}" required="true" requiredMessage="#{bunccw.CreateOrder1RequiredMessage_proNo}"/>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_timeIn}" for="timeIn" />
+                    <h:inputText id="timeIn" value="#{order1Controller.selected.timeIn}" title="#{bunccw.CreateOrder1Title_timeIn}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{order1Controller.selected.amount}" title="#{bunccw.CreateOrder1Title_amount}" />
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_total}" for="total" />
+                    <h:inputText id="total" value="#{order1Controller.selected.total}" title="#{bunccw.CreateOrder1Title_total}" />
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_timeOut}" for="timeOut" />
+                    <h:inputText id="timeOut" value="#{order1Controller.selected.timeOut}" title="#{bunccw.CreateOrder1Title_timeOut}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_empId}" for="empId" />
+                    <h:inputText id="empId" value="#{order1Controller.selected.empId}" title="#{bunccw.CreateOrder1Title_empId}" required="true" requiredMessage="#{bunccw.CreateOrder1RequiredMessage_empId}"/>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_msgId}" for="msgId" />
+                    <h:inputText id="msgId" value="#{order1Controller.selected.msgId}" title="#{bunccw.CreateOrder1Title_msgId}" required="true" requiredMessage="#{bunccw.CreateOrder1RequiredMessage_msgId}"/>
+                    <h:outputLabel value="#{bunccw.CreateOrder1Label_campId}" for="campId" />
+                    <h:inputText id="campId" value="#{order1Controller.selected.campId}" title="#{bunccw.CreateOrder1Title_campId}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{order1Controller.create}" value="#{bunccw.CreateOrder1SaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{order1Controller.prepareList}" value="#{bunccw.CreateOrder1ShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.CreateOrder1IndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

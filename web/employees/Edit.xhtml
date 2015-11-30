@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.EditEmployeesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_employeesPK_memId}" for="employeesPK_memId" />
+                    <h:inputText id="employeesPK_memId" value="#{employeesController.selected.employeesPK.memId}" title="#{bunccw.EditEmployeesTitle_employeesPK_memId}" required="true" requiredMessage="#{bunccw.EditEmployeesRequiredMessage_employeesPK_memId}"/>
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_employeesPK_msgId}" for="employeesPK_msgId" />
+                    <h:inputText id="employeesPK_msgId" value="#{employeesController.selected.employeesPK.msgId}" title="#{bunccw.EditEmployeesTitle_employeesPK_msgId}" required="true" requiredMessage="#{bunccw.EditEmployeesRequiredMessage_employeesPK_msgId}"/>
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_employeesPK_proNo}" for="employeesPK_proNo" />
+                    <h:inputText id="employeesPK_proNo" value="#{employeesController.selected.employeesPK.proNo}" title="#{bunccw.EditEmployeesTitle_employeesPK_proNo}" required="true" requiredMessage="#{bunccw.EditEmployeesRequiredMessage_employeesPK_proNo}"/>
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_employeesPK_empId}" for="employeesPK_empId" />
+                    <h:inputText id="employeesPK_empId" value="#{employeesController.selected.employeesPK.empId}" title="#{bunccw.EditEmployeesTitle_employeesPK_empId}" required="true" requiredMessage="#{bunccw.EditEmployeesRequiredMessage_employeesPK_empId}"/>
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{employeesController.selected.name}" title="#{bunccw.EditEmployeesTitle_name}" />
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_sername}" for="sername" />
+                    <h:inputText id="sername" value="#{employeesController.selected.sername}" title="#{bunccw.EditEmployeesTitle_sername}" />
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{employeesController.selected.address}" title="#{bunccw.EditEmployeesTitle_address}" />
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{employeesController.selected.tel}" title="#{bunccw.EditEmployeesTitle_tel}" />
+                    <h:outputLabel value="#{bunccw.EditEmployeesLabel_branchId}" for="branchId" />
+                    <h:selectOneMenu id="branchId" value="#{employeesController.selected.branchId}" title="#{bunccw.EditEmployeesTitle_branchId}" >
+                        <f:selectItems value="#{branchController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{employeesController.update}" value="#{bunccw.EditEmployeesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bunccw.EditEmployeesViewLink}"/>
+                <br />
+                <h:commandLink action="#{employeesController.prepareList}" value="#{bunccw.EditEmployeesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.EditEmployeesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ViewProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bunccw.ViewProductLabel_proNo}"/>
+                    <h:outputText value="#{productController.selected.proNo}" title="#{bunccw.ViewProductTitle_proNo}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_proName}"/>
+                    <h:outputText value="#{productController.selected.proName}" title="#{bunccw.ViewProductTitle_proName}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_type}"/>
+                    <h:outputText value="#{productController.selected.type}" title="#{bunccw.ViewProductTitle_type}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_size}"/>
+                    <h:outputText value="#{productController.selected.size}" title="#{bunccw.ViewProductTitle_size}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_price}"/>
+                    <h:outputText value="#{productController.selected.price}" title="#{bunccw.ViewProductTitle_price}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_branchId}"/>
+                    <h:outputText value="#{productController.selected.branchId}" title="#{bunccw.ViewProductTitle_branchId}"/>
+                    <h:outputText value="#{bunccw.ViewProductLabel_memId}"/>
+                    <h:outputText value="#{productController.selected.memId}" title="#{bunccw.ViewProductTitle_memId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{productController.destroyAndView}" value="#{bunccw.ViewProductDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bunccw.ViewProductEditLink}"/>
+                <br />
+                <h:commandLink action="#{productController.prepareCreate}" value="#{bunccw.ViewProductCreateLink}" />
+                <br />
+                <h:commandLink action="#{productController.prepareList}" value="#{bunccw.ViewProductShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ViewProductIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

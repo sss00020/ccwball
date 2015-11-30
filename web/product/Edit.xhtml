@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.EditProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bunccw.EditProductLabel_proNo}" for="proNo" />
+                    <h:inputText id="proNo" value="#{productController.selected.proNo}" title="#{bunccw.EditProductTitle_proNo}" required="true" requiredMessage="#{bunccw.EditProductRequiredMessage_proNo}"/>
+                    <h:outputLabel value="#{bunccw.EditProductLabel_proName}" for="proName" />
+                    <h:inputText id="proName" value="#{productController.selected.proName}" title="#{bunccw.EditProductTitle_proName}" />
+                    <h:outputLabel value="#{bunccw.EditProductLabel_type}" for="type" />
+                    <h:inputText id="type" value="#{productController.selected.type}" title="#{bunccw.EditProductTitle_type}" />
+                    <h:outputLabel value="#{bunccw.EditProductLabel_size}" for="size" />
+                    <h:inputText id="size" value="#{productController.selected.size}" title="#{bunccw.EditProductTitle_size}" />
+                    <h:outputLabel value="#{bunccw.EditProductLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{productController.selected.price}" title="#{bunccw.EditProductTitle_price}" />
+                    <h:outputLabel value="#{bunccw.EditProductLabel_branchId}" for="branchId" />
+                    <h:selectOneMenu id="branchId" value="#{productController.selected.branchId}" title="#{bunccw.EditProductTitle_branchId}" >
+                        <f:selectItems value="#{branchController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bunccw.EditProductLabel_memId}" for="memId" />
+                    <h:selectOneMenu id="memId" value="#{productController.selected.memId}" title="#{bunccw.EditProductTitle_memId}" >
+                        <f:selectItems value="#{order1Controller.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{productController.update}" value="#{bunccw.EditProductSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bunccw.EditProductViewLink}"/>
+                <br />
+                <h:commandLink action="#{productController.prepareList}" value="#{bunccw.EditProductShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.EditProductIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

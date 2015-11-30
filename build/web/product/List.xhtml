@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ListProductTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bunccw.ListProductEmpty}" rendered="#{productController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{productController.items.rowCount > 0}">
+                    <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{productController.previous}" value="#{bunccw.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{productController.next}" value="#{bunccw.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{productController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_proNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_proName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_type}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.type}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_size}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.size}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_price}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.price}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_branchId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.branchId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListProductTitle_memId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.memId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{productController.prepareView}" value="#{bunccw.ListProductViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{productController.prepareEdit}" value="#{bunccw.ListProductEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{productController.destroy}" value="#{bunccw.ListProductDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{productController.prepareCreate}" value="#{bunccw.ListProductCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ListProductIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

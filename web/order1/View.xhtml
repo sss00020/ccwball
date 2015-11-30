@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ViewOrder1Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bunccw.ViewOrder1Label_memId}"/>
+                    <h:outputText value="#{order1Controller.selected.memId}" title="#{bunccw.ViewOrder1Title_memId}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_proNo}"/>
+                    <h:outputText value="#{order1Controller.selected.proNo}" title="#{bunccw.ViewOrder1Title_proNo}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_timeIn}"/>
+                    <h:outputText value="#{order1Controller.selected.timeIn}" title="#{bunccw.ViewOrder1Title_timeIn}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_amount}"/>
+                    <h:outputText value="#{order1Controller.selected.amount}" title="#{bunccw.ViewOrder1Title_amount}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_total}"/>
+                    <h:outputText value="#{order1Controller.selected.total}" title="#{bunccw.ViewOrder1Title_total}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_timeOut}"/>
+                    <h:outputText value="#{order1Controller.selected.timeOut}" title="#{bunccw.ViewOrder1Title_timeOut}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_empId}"/>
+                    <h:outputText value="#{order1Controller.selected.empId}" title="#{bunccw.ViewOrder1Title_empId}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_msgId}"/>
+                    <h:outputText value="#{order1Controller.selected.msgId}" title="#{bunccw.ViewOrder1Title_msgId}"/>
+                    <h:outputText value="#{bunccw.ViewOrder1Label_campId}"/>
+                    <h:outputText value="#{order1Controller.selected.campId}" title="#{bunccw.ViewOrder1Title_campId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{order1Controller.destroyAndView}" value="#{bunccw.ViewOrder1DestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bunccw.ViewOrder1EditLink}"/>
+                <br />
+                <h:commandLink action="#{order1Controller.prepareCreate}" value="#{bunccw.ViewOrder1CreateLink}" />
+                <br />
+                <h:commandLink action="#{order1Controller.prepareList}" value="#{bunccw.ViewOrder1ShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ViewOrder1IndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

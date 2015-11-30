@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.EditCustomerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_memId}" for="memId" />
+                    <h:inputText id="memId" value="#{customerController.selected.memId}" title="#{bunccw.EditCustomerTitle_memId}" required="true" requiredMessage="#{bunccw.EditCustomerRequiredMessage_memId}"/>
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{customerController.selected.name}" title="#{bunccw.EditCustomerTitle_name}" />
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_surname}" for="surname" />
+                    <h:inputText id="surname" value="#{customerController.selected.surname}" title="#{bunccw.EditCustomerTitle_surname}" />
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{customerController.selected.address}" title="#{bunccw.EditCustomerTitle_address}" />
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_tel}" for="tel" />
+                    <h:inputText id="tel" value="#{customerController.selected.tel}" title="#{bunccw.EditCustomerTitle_tel}" />
+                    <h:outputLabel value="#{bunccw.EditCustomerLabel_dateTime}" for="dateTime" />
+                    <h:inputText id="dateTime" value="#{customerController.selected.dateTime}" title="#{bunccw.EditCustomerTitle_dateTime}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{customerController.update}" value="#{bunccw.EditCustomerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bunccw.EditCustomerViewLink}"/>
+                <br />
+                <h:commandLink action="#{customerController.prepareList}" value="#{bunccw.EditCustomerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.EditCustomerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

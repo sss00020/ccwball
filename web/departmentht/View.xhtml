@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ViewDepartmenthtTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bunccw.ViewDepartmenthtLabel_depID}"/>
+                    <h:outputText value="#{departmenthtController.selected.depID}" title="#{bunccw.ViewDepartmenthtTitle_depID}"/>
+                    <h:outputText value="#{bunccw.ViewDepartmenthtLabel_depName}"/>
+                    <h:outputText value="#{departmenthtController.selected.depName}" title="#{bunccw.ViewDepartmenthtTitle_depName}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{departmenthtController.destroyAndView}" value="#{bunccw.ViewDepartmenthtDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bunccw.ViewDepartmenthtEditLink}"/>
+                <br />
+                <h:commandLink action="#{departmenthtController.prepareCreate}" value="#{bunccw.ViewDepartmenthtCreateLink}" />
+                <br />
+                <h:commandLink action="#{departmenthtController.prepareList}" value="#{bunccw.ViewDepartmenthtShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ViewDepartmenthtIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

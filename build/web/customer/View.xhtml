@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ViewCustomerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_memId}"/>
+                    <h:outputText value="#{customerController.selected.memId}" title="#{bunccw.ViewCustomerTitle_memId}"/>
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_name}"/>
+                    <h:outputText value="#{customerController.selected.name}" title="#{bunccw.ViewCustomerTitle_name}"/>
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_surname}"/>
+                    <h:outputText value="#{customerController.selected.surname}" title="#{bunccw.ViewCustomerTitle_surname}"/>
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_address}"/>
+                    <h:outputText value="#{customerController.selected.address}" title="#{bunccw.ViewCustomerTitle_address}"/>
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_tel}"/>
+                    <h:outputText value="#{customerController.selected.tel}" title="#{bunccw.ViewCustomerTitle_tel}"/>
+                    <h:outputText value="#{bunccw.ViewCustomerLabel_dateTime}"/>
+                    <h:outputText value="#{customerController.selected.dateTime}" title="#{bunccw.ViewCustomerTitle_dateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{customerController.destroyAndView}" value="#{bunccw.ViewCustomerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bunccw.ViewCustomerEditLink}"/>
+                <br />
+                <h:commandLink action="#{customerController.prepareCreate}" value="#{bunccw.ViewCustomerCreateLink}" />
+                <br />
+                <h:commandLink action="#{customerController.prepareList}" value="#{bunccw.ViewCustomerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ViewCustomerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

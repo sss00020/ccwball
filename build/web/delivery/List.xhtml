@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bunccw.ListDeliveryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bunccw.ListDeliveryEmpty}" rendered="#{deliveryController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{deliveryController.items.rowCount > 0}">
+                    <h:outputText value="#{deliveryController.pagination.pageFirstItem + 1}..#{deliveryController.pagination.pageLastItem + 1}/#{deliveryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{deliveryController.previous}" value="#{bunccw.Previous} #{deliveryController.pagination.pageSize}" rendered="#{deliveryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{deliveryController.next}" value="#{bunccw.Next} #{deliveryController.pagination.pageSize}" rendered="#{deliveryController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{deliveryController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListDeliveryTitle_deliveryPK_empId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryPK.empId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListDeliveryTitle_deliveryPK_memId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryPK.memId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListDeliveryTitle_deliveryPK_msgId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryPK.msgId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bunccw.ListDeliveryTitle_deliveryPK_proNo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryPK.proNo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{deliveryController.prepareView}" value="#{bunccw.ListDeliveryViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{deliveryController.prepareEdit}" value="#{bunccw.ListDeliveryEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{deliveryController.destroy}" value="#{bunccw.ListDeliveryDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{deliveryController.prepareCreate}" value="#{bunccw.ListDeliveryCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bunccw.ListDeliveryIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
